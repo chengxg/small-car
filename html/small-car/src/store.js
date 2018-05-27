@@ -22,7 +22,7 @@ export let bluetoothStore = {
 			return;
 		}
 		let that = this;
-		plus.bluetooth.sendData(function(msg) {
+		cxg.bluetoothSerial.sendData(function(msg) {
 
 		}, function(msg) {
 			that.errMsg = msg;

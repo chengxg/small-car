@@ -42,7 +42,7 @@ const byte TURN_MAX_DEG = 60; //小车最大转弯角度
 const byte CARMODE_AUTO_TRACE = 2;     //自动寻迹 模式
 const byte CARMODE_MANUAL_CONTROL = 1; //手动遥控 模式
 const byte CARMODE_AUTO_AVOIDING = 3;  //自动避障 模式
-byte carMode = CARMODE_AUTO_AVOIDING;  //当前小车的模式
+byte carMode = CARMODE_AUTO_TRACE;  //当前小车的模式
 
 //定时器副线程 计数参数
 unsigned int timeCount = 0;
@@ -556,6 +556,11 @@ void resolveCommandData(String comdata)
         resolveSetTraceMaxDeg(commandBody);
         return;
     }
+    if (commandName.equals("r-p"))
+    {
+        resolveReadCarParams();
+        return;
+    }
 }
 
 //手动遥控控制指令
@@ -648,6 +653,19 @@ void resolveSetTraceMaxDeg(String commandBody)
     ret += "]";
     Serial.print(ret);
 }
+//同步小车参数
+void resolveReadCarParams()
+{
+    String ret = "[r-p:";
+    ret += "cm=";
+    ret += carMode;
+    ret += "&atTMD=";
+    ret += atTurnMaxDeg;
+    ret += "&atMS=";
+    ret += atMaxSpeed;
+    ret += "]";
+    Serial.print(ret);
+}
 //---------------------------------指令解析 结束------------------------------
 
 //初始化手动控制常量
@@ -696,7 +714,7 @@ void setup()
 //arduino 主线程
 void loop()
 {
-    //readCommandData();
+    readCommandData();
     if (carMode == CARMODE_AUTO_TRACE)
     {
         autoTraceControl();
@@ -716,7 +734,7 @@ void loop()
 void secondThread()
 {
     timeCount++;
-    if (timeCount % 2 == 0)
+    if (timeCount % 3 == 0)
     {
         //读取串口数据, 数据量不能太大
         readCommandData();
@@ -739,6 +757,6 @@ void secondThread()
     }
     if (carMode == CARMODE_AUTO_AVOIDING)
     {
-        autoAvoidingControl2();
+        //autoAvoidingControl2();
     }
 }

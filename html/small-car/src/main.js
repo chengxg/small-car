@@ -1,31 +1,62 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import Vue from 'vue'
-import App from './App'
-import router from './router'
-import bluetoothPlugin from './assets/js/plugin/bluetooth'
+// Import Vue
+import Vue from 'vue';
 
-import './assets/font-awesome/4.7.0/css/font-awesome.css'
-import './assets/mui/css/mui.css'
-import './assets/w3-css/w3-4.css'
-import './assets/w3-css/w3-extension.css'
+// Import F7
+import Framework7 from 'framework7/dist/framework7.esm.bundle.js';
+// Import F7 Vue Plugin
+import Framework7Vue from 'framework7-vue/dist/framework7-vue.esm.bundle.js';
+// Import F7 Styles
+import Framework7Styles from 'framework7/dist/css/framework7.css';
 
-import MintUI from 'mint-ui'
-import 'mint-ui/lib/style.css'
-Vue.use(MintUI)
+// Import Icons and App Custom Styles
+import IconsStyles from './assets/framework7/css/icons.css';
+import AppStyles from './assets/framework7/css/app.css';
+import font from './assets/font-awesome/4.7.0/css/font-awesome.css';
 
-Vue.config.productionTip = false
+// Import Routes
+import Routes from './routes.js'
 
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  components: { App },
-  template: '<App/>'
-})
+// Import App Component
+import App from './app';
 
-//初始化插件
-document.addEventListener("plusready", function() {
-  window.plus.bluetooth = bluetoothPlugin;
-  bluetoothPlugin.init();
-},false);
+// Init F7 Vue Plugin
+Vue.use(Framework7Vue, Framework7)
+
+// Init App
+let vm = new Vue({
+	el: '#app',
+	template: '<app/>',
+	// Init Framework7 by passing parameters here
+	framework7: {
+		id: 'io.framework7.testapp', // App bundle ID
+		name: 'Framework7', // App name
+		theme: 'md', // Automatic theme detection
+		// App routes
+		routes: Routes,
+	},
+	// Register App Component
+	components: {
+		app: App
+	}
+});
+
+
+document.addEventListener('deviceready', function() {
+	let lastTime = 0;
+	
+	document.addEventListener("backbutton", function() {
+		let nowTime = new Date().getTime();
+		if(nowTime - lastTime < 600){
+			navigator.app.exitApp();
+			return;
+		}
+		lastTime = nowTime;
+		/*vm.$f7.toast.create({
+			text: "再按一次退出程序",
+			position: 'center',
+			closeTimeout: 3000,
+		}).open();*/
+		vm.$f7.router.back();
+	}, false);
+
+}, false);
