@@ -1,0 +1,26 @@
+{
+  "cordova-plugin-whitelist": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-whitelist@1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cxg-plugin-bluetoothSerial": {
+    "source": {
+      "type": "local",
+      "path": "D:\\development\\my-project\\html\\cordova\\small-car\\node_modules\\cxg-plugin-bluetoothSerial"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cxg-plugin-wifiManage": {
+    "source": {
+      "type": "local",
+      "path": "D:\\development\\my-project\\html\\cordova\\small-car\\node_modules\\cxg-plugin-wifiManage"
+    },
+    "is_top_level": true,
+    "variables": {}
+  }
+}

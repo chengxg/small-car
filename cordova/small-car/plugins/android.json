@@ -1,0 +1,21 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.chengxg.smallcar"
+    },
+    "cxg-plugin-bluetoothSerial": {
+      "PACKAGE_NAME": "com.chengxg.smallcar"
+    },
+    "cxg-plugin-wifiManage": {
+      "PACKAGE_NAME": "com.chengxg.smallcar"
+    }
+  },
+  "dependent_plugins": {}
+}

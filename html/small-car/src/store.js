@@ -29,3 +29,8 @@ export let bluetoothStore = {
 		}, dataStr);
 	}
 }
+
+export let wifiStore = {
+	ipAddress:"192.168.0.102",
+	port:"8080"
+}

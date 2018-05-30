@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cxg-plugin-wifiManage" version="0.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+	<name>wifiManage</name>
+	<js-module name="wifiManage" src="www/wifiManage.js">
+		<clobbers target="cxg.wifiManage" />
+	</js-module>
+	<platform name="android">
+		<config-file parent="/*" target="res/xml/config.xml">
+			<feature name="WifiManage">
+				<param name="android-package" value="com.chengxg.plugin.WifiManage" />
+			</feature>
+		</config-file>
+		
+		<config-file parent="/*" target="AndroidManifest.xml">  
+            <!-- 此处添加所需权限 -->  
+			<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+			<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+			<uses-permission android:name="android.permission.INTERNET" />
+        </config-file>  
+		
+		<source-file src="src/android/WifiManage.java" target-dir="src/com/chengxg/plugin" />
+		
+	</platform>
+</plugin>

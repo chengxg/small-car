@@ -1,7 +1,8 @@
-import HomePage from './pages/home.vue';
-import AboutPage from './pages/about.vue';
-import NotFoundPage from './pages/not-found.vue';
+import HomePage from './view/home.vue';
+import AboutPage from './view/about.vue';
+import NotFoundPage from './view/not-found.vue';
 import BluetoothCar from './view/car/bluetooth-car.vue';
+import WifiCar from './view/car/wifi-car.vue';
 
 export default [{
 		path: '/',
@@ -14,6 +15,10 @@ export default [{
 	{
 		path: '/car/bluetooth/',
 		component: BluetoothCar,
+	},
+	{ 
+		path: '/car/wifi/',
+		component: WifiCar,
 	},
 	{
 		path: '(.*)',

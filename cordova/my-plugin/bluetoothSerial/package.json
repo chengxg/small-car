@@ -1,0 +1,27 @@
+{  
+  "name": "cxg-plugin-bluetoothSerial",  
+  "version": "1.0.0",  
+  "description": "bluetoothSerial",  
+  "cordova": {  
+    "id": "cxg-plugin-bluetoothSerial",  
+    "platforms": [  
+      "android"  
+    ]  
+  },  
+  "repository": {  
+    "type": "",  
+    "url": ""  
+  },  
+  "keywords": [  
+    "cordova", 
+    "bluetoothSerial", 
+    "ecosystem:cordova",  
+    "cordova-android"  
+  ],  
+  "author": "",  
+  "license": "Apache 2.0",  
+  "bugs": {  
+    "url": ""  
+  },  
+  "homepage": ""  
+}  

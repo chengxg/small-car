@@ -1,10 +1,7 @@
 <template>
 	<!-- App -->
 	<div id="app" class="color-theme-blue">
-
-		<!-- Statusbar -->
 		<div class="statusbar-overlay"></div>
-		<!-- Left Panel -->
 		<f7-panel left>
 			<f7-navbar>
 				<f7-nav-right>
@@ -18,7 +15,6 @@
 			</f7-list>
 		</f7-panel>
 
-		<!-- Main View -->
 		<f7-view id="main-view" url="/" main></f7-view>
 	</div>
 </template>

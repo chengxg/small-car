@@ -19,7 +19,7 @@
 				</li>
 			</ul>
 		</div>
-		
+
 		<f7-block-title>
 			<div class="row" style="display: flex;align-items: center;">
 				<div class="col">设置小车模式</div>
@@ -32,7 +32,7 @@
 			</div>
 		</f7-block-title>
 		<f7-list>
-			<f7-list-item radio v-for="(mode,index) in carModeOptions" :value="mode.value" :title="mode.label" :checked="mode.value === carSetting.carMode" @change="onChageCarMode" name="carMode"></f7-list-item>
+			<f7-list-item radio v-for="(mode,index) in carModeOptions" :key="index" :value="mode.value" :title="mode.label" :checked="mode.value === carSetting.carMode" @change="onChageCarMode" name="carMode"></f7-list-item>
 		</f7-list>
 
 		<f7-block-title>
@@ -41,7 +41,7 @@
 		<f7-list>
 			<f7-list-item>
 				<f7-label>寻迹最大速度: {{carSetting.atMaxSpeed}}</f7-label>
-				
+
 				<f7-input>
 					<f7-range min="0" max="255" :value="carSetting.atMaxSpeed" step="1" :label="true" @range:change="onChangeAtMaxSpeed"></f7-range>
 				</f7-input>
@@ -53,7 +53,7 @@
 				</f7-input>
 			</f7-list-item>
 		</f7-list>
-		
+
 		<f7-block-title>
 			手动遥控
 		</f7-block-title>
@@ -84,9 +84,8 @@
 	import Bluetooth from '@/components/Bluetooth';
 	import Rocker from '@/components/Rocker';
 
-
-	let setAtTurnMaxDegTimeId= 0;
-	let setAtMaxSpeedTimeId= 0;
+	let setAtTurnMaxDegTimeId = 0;
+	let setAtMaxSpeedTimeId = 0;
 
 	export default {
 		name: 'BluetoothCar',
@@ -111,8 +110,8 @@
 				],
 				carSetting: {
 					carMode: "0",
-					oldAtTurnMaxDeg:0,
-					oldAtMaxSpeed:0,
+					oldAtTurnMaxDeg: 0,
+					oldAtMaxSpeed: 0,
 					atTurnMaxDeg: 0,
 					atMaxSpeed: 0
 				},
@@ -154,14 +153,14 @@
 					}, 300);
 				})
 			},
-			onChangeAtMaxSpeed(val){
+			onChangeAtMaxSpeed(val) {
 				let that = this;
 				that.carSetting.atMaxSpeed = val;
-				if(that.carSetting.atMaxSpeed === that.carSetting.oldAtMaxSpeed){
+				if(that.carSetting.atMaxSpeed === that.carSetting.oldAtMaxSpeed) {
 					return;
 				}
 				clearTimeout(setAtMaxSpeedTimeId);
-				setAtMaxSpeedTimeId = setTimeout(function(){
+				setAtMaxSpeedTimeId = setTimeout(function() {
 					let command = "[tms:" + that.carSetting.atMaxSpeed + "]";
 					let sendPromise = that.sendDataToSinglechip(command, true);
 					sendPromise.then(function() {
@@ -174,17 +173,17 @@
 						}).open();
 						that.carSetting.atMaxSpeed = that.carSetting.oldAtMaxSpeed;
 					})
-				},1000);
+				}, 1000);
 			},
-			onChangeAtTurnMaxDeg(val){
+			onChangeAtTurnMaxDeg(val) {
 				let that = this;
 				that.carSetting.atTurnMaxDeg = val;
-				if(that.carSetting.atTurnMaxDeg === that.carSetting.oldAtTurnMaxDeg){
+				if(that.carSetting.atTurnMaxDeg === that.carSetting.oldAtTurnMaxDeg) {
 					return;
 				}
-				
+
 				clearTimeout(setAtTurnMaxDegTimeId);
-				setAtTurnMaxDegTimeId = setTimeout(function(){
+				setAtTurnMaxDegTimeId = setTimeout(function() {
 					let command = "[tmd:" + that.carSetting.atTurnMaxDeg + "]";
 					let sendPromise = that.sendDataToSinglechip(command, true);
 					sendPromise.then(function() {
@@ -197,7 +196,7 @@
 						}).open();
 						that.carSetting.atTurnMaxDeg = that.carSetting.oldAtTurnMaxDeg;
 					})
-				},1000)
+				}, 1000)
 			},
 			readCarParamFromSinglechip() {
 				let that = this;

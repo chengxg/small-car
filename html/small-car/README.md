@@ -1,6 +1,7 @@
 # small-car
 
-> android-control
+> 智能小车控制app的html页面, 将编译后的页面放入cordova中进行打包。
+采用cordova + framework7 + vue.js开发
 
 ## Build Setup
 
@@ -18,4 +19,5 @@ npm run build
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## 注意
+由于这是一个纯前端工程，请在index.html中引入cordova.js。  

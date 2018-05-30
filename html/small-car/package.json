@@ -1,7 +1,7 @@
 {
   "name": "small-car",
   "version": "1.0.0",
-  "description": "android-control",
+  "description": "small-car",
   "author": "chengxg <1610715813@qq.com>",
   "private": true,
   "scripts": {
@@ -13,12 +13,7 @@
     "framework7": "^2.2.5",
     "framework7-vue": "^2.2.5",
     "material-design-icons-iconfont": "^3.0.3",
-    "mint-ui": "^2.2.13",
-    "muse-ui": "^2.1.0",
-    "vue": "^2.5.2",
-    "vue-cordova": "^0.1.2",
-    "vue-router": "^3.0.1",
-    "vuetify": "^1.0.18"
+    "vue": "^2.5.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
